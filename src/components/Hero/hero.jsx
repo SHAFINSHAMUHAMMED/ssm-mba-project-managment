@@ -53,8 +53,9 @@ function hero() {
               </a>
             </div>
           </div>
+          <img className="hero-right-img" src={heroImg} alt="" />
           <div className="hero-right">
-            <img className="hero-right-img" src={heroImg} alt="" />
+           
             <div className="hero-icons-main">
               <img
                 className="bag-icon animated-icon-1"

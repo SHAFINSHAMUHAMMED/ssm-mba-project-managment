@@ -203,8 +203,9 @@ button {
   /* align-items: flex-end; */
   border-top-left-radius: 48px;
   border-top-right-radius: 48px;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
+  position: relative;
 }
 
 .hero-section-devider {
@@ -328,19 +329,22 @@ button {
   align-items: center;
   justify-content: center;
   height: 735px;
-  width: 100%;
+  width: 776px;
   overflow: visible;
   position: relative;
 }
 .hero-right-img {
-  /* position: absolute; */
+  position: absolute;
+  object-fit: cover;
+  object-position: bottom;
   right: -50px;
+  bottom: 0;
   height: 735px;
-  width: 100%;
+  width: 776px;
 }
 .hero-icons-main {
   position: absolute;
-  width: 50%;
+  width: 20%;
   height: 80%;
 }
 
@@ -349,7 +353,7 @@ button {
   height: 209px;
   position: absolute;
   top: 250px;
-  left: -180px;
+  left: -100px;
   z-index: 1;
 }
 
