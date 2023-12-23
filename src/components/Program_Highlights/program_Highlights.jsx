@@ -69,7 +69,7 @@ function program_Highlights() {
             <h4 className="text-body-light ">Global perspective</h4>
             <p>
               Many programs emphasize the importance of understanding global
-              supply chain management, providing students with the knowledge and
+              project management, providing students with the knowledge and
               skills to navigate the complexities of international business.
             </p>
           </div>
@@ -154,7 +154,7 @@ function program_Highlights() {
             <h4 className="text-body-light">Industry-focused curriculum:</h4>
             <p>
               Coursework is designed to provide students with a strong
-              foundation in supply chain management principles, as well as
+              foundation in project management principles, as well as
               specialized knowledge in areas such as procurement, logistics, and
               operations management.
             </p>
@@ -206,7 +206,7 @@ function program_Highlights() {
             </h4>
             <p>
               Students have the opportunity to learn and utilize the latest
-              technology and software used in supply chain management, preparing
+              technology and software used in project management, preparing
               them for the rapidly evolving business landscape.
             </p>
           </div>

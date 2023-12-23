@@ -432,9 +432,8 @@ function ReviewSection() {
               </div>
               <p className="">
                 I always wanted to do an MBA from the Institute which offers
-                online education but with good quality. I done my MBA in Supply
-                chain management from SSM with the help of Learner University
-                College Dubai.The MBA in Supply chain management from Swiss
+                online education but with good quality. I done my MBA in Project management from SSM with the help of Learner University
+                College Dubai.The MBA in Project management from Swiss
                 School of Management and the services provided by Learners were
                 well suited according to my need. The Fees is also good and the
                 staff is very helpful

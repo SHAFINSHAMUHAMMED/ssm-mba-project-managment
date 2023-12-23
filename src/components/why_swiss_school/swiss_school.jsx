@@ -7,14 +7,15 @@ function swiss_school() {
   return (
     <div className={`why-swiss-school`}>
       <h1 className=" swiss-school-h1">
-      Become a <span className="highlight-green">Global </span> <span className="highlight-green">Supply </span> <span className="highlight-green">Chain </span> <span className="highlight-green">Expert </span> <span className="wavy-underline-green-1">in </span> <span className="wavy-underline-green-2">Just 12</span> <span className="wavy-underline-green-3">Months</span>
+      Transform Your <br /> 
+<span className="highlight-green wavy-underline"> Professional Life</span> <span className="highlight-green wavy-underline">in a Year</span>: Master Project Management Skills That Pay Off Big Time!
       </h1>
       <div className="swiss-school-p-main">
         <p className="p-margine">
-        Elevate your career with the Swiss School of Management's Online MBA specializing in Supply Chain and Logistics. This program, meticulously designed for aspiring professionals, offers deep insights into the ever-evolving world of supply chain management and logistics.
+        Designed for the ambitious, this program cuts through the noise, giving you the real-world skills to manage and lead projects with precision and confidence. 
         </p>
         <p className="p-margine">
-          In just one year, you'll acquire the skills needed to optimize supply chains, enhance logistic operations, and lead teams to success in a globally connected market.
+        In just one year, you’ll leap from aspiring professional to respected project leader. This isn't just education; it's your launchpad to extraordinary career heights. Enroll now and start your journey to the top.
         </p>
       </div>
       <Lottie animationData={graph} loop={true} />

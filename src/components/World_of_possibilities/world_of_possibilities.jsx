@@ -359,7 +359,7 @@ function world_of_possibilities() {
           containerStyle={{ justifyContent: "center" }}
         />
         <Claim_description color="rgba(11, 67, 75, 0.79)" />
-        <div className="world-of-possibilities-bottom">
+        
           <div className="world-of-possibilities-icons">
             <img
               className="world-of-possibilities-icon-1 "
@@ -393,9 +393,8 @@ function world_of_possibilities() {
               alt=""
             />
           </div>
-        </div>
       </div>
-      {/* <div className="world-of-possibilities-brochure ">
+      <div className="world-of-possibilities-brochure ">
         <div className="world-of-possibilities-brochure-left">
           <h1>
             Get Instant Access To &nbsp;
@@ -409,7 +408,7 @@ function world_of_possibilities() {
           </p>
           <div className="flex gap-3 sm:gap-6 items-center ">
           <a 
-          onClick={togglePopup}
+          // onClick={togglePopup}
           className="flex gap-3 sm:gap-6 items-center cursor-pointer">
             <h3 className="underline">Download Free Brochure Now</h3>
             
@@ -434,7 +433,7 @@ function world_of_possibilities() {
         </div>
         <img className='swiss-img-1' src={swisMba} alt="" />
         <img className='swiss-img-2' src={swisMbaTab} alt="" />
-      </div> */}
+      </div>
       {/* {isPopupOpen && <Popup  />} */}
     </div>
   );

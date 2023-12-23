@@ -31,7 +31,7 @@ function App() {
         <Swiss_school />
         <Program_Highlights />
         <Acreditions />
-        <Unbeatable_reason />
+        {/* <Unbeatable_reason /> */}
         <Power_skills />
 
         {/* <Uae_professionals /> */}

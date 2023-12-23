@@ -199,10 +199,6 @@ button {
 /* hero section */
 
 .hero-section {
-  background-image: url('./assets/hero-section-bg.webp');
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  /* background-size: contain; */
   margin: 10px 10px 0px 10px;
   /* align-items: flex-end; */
   border-top-left-radius: 48px;
@@ -226,11 +222,7 @@ button {
   gap: 0px;
   align-items: flex-end;
   overflow: visible;
-  background-image: url('./assets/GlobalMap2.webp');
-  background-position: right;
-  background-position-x: 350px;
-  background-repeat: no-repeat;
-  background-size: 900px;
+  /* position: relative; */
 }
 
 .hero-left {
@@ -239,12 +231,15 @@ button {
 }
 
 .hero-headline {
-  width: 594px;
+  width:721px;
   text-align: left;
   color: #0B434B;
-  font-size: 80px;
-  line-height: 85px;
+  font-size: 74px;
+  line-height: 68px;
   padding-top: 214px;
+}
+.no-wrap {
+  white-space: nowrap;
 }
 
 
@@ -256,7 +251,10 @@ button {
   padding-bottom: 30px;
   margin: auto;
 }
-
+.hero-left h3 {
+  font-size: 25px;
+  font-weight: 700;
+}
 
 .wavy-underline {
   position: relative;
@@ -274,6 +272,24 @@ button {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.wavy-underline2 {
+  position: relative;
+  display: inline;
+}
+
+.wavy-underline2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background-image: url('./assets/svg/wawyUnderline2.svg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+
 .wavy-underline-orange1 {
   position: relative;
   display: inline;
@@ -311,19 +327,20 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 771px;
-  width: 661px;
-  background-image: url('./assets/heroSupply.webp');
-  background-position: center bottom;
-  background-size: 661px, 771px;
-  background-repeat: no-repeat;
-  overflow: visible;
-  transform: translateX(70px);
-}
-
-.hero-icons-main {
-  position: relative;
+  height: 735px;
   width: 100%;
+  overflow: visible;
+  position: relative;
+}
+.hero-right-img {
+  /* position: absolute; */
+  right: -50px;
+  height: 735px;
+  width: 100%;
+}
+.hero-icons-main {
+  position: absolute;
+  width: 50%;
   height: 80%;
 }
 
@@ -331,8 +348,8 @@ button {
   width: 250px;
   height: 209px;
   position: absolute;
-  top: 190px;
-  left: -40px;
+  top: 250px;
+  left: -180px;
   z-index: 1;
 }
 
@@ -340,8 +357,8 @@ button {
   width: 100px;
   height: 100px;
   position: absolute;
-  top: 200px;
-  left: 420px;
+  top: 350px;
+  left: 260px;
   z-index: 1;
 }
 
@@ -349,8 +366,8 @@ button {
   width: 149px;
   height: 194px;
   position: absolute;
-  top: 400px;
-  left: 380px;
+  top: 430px;
+  left: 10px;
   z-index: 1;
 }
 
@@ -397,6 +414,7 @@ button {
 .why-swiss-school {
   max-width: 800px;
   margin: auto;
+  margin-top: -50px;
 }
 
 .swiss-school-h1 {
@@ -802,7 +820,13 @@ line-height: 136%;
 /* 6-power-skills section */
 
 .power-skill-main {
-  padding-bottom: 80px;
+  background-color: #DCFBFF;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 41px;
+  padding-top: 61px;
+  border-radius: 64px;
+  padding-bottom:65px;
   overflow: hidden;
 }
 
@@ -987,13 +1011,19 @@ line-height: 136%;
 /* World of possibilities section */
 
 .world-of-possibilities-main {
-  background: #DCFBFF;
+  background-color: #DCFBFF;
   margin: 0px 10px 0px 10px;
   position: relative;
   padding-top: 80px;
   margin-top: 80px;
   margin-bottom: 57px;
   border-radius: 64px;
+  height: 2776px;
+  background-image: url('./assets/professional2.webp');
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 .world-of-possibilities-main h1 {
@@ -1159,17 +1189,6 @@ line-height: 136%;
   stroke: white;
 }
 
-.world-of-possibilities-bottom {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background-image: url('./assets/professional2.webp');
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 700px;
-  mix-blend-mode: darken;
-}
 
 .world-of-possibilities-icon-dot {
   position: absolute;
@@ -1179,36 +1198,38 @@ line-height: 136%;
 }
 
 .world-of-possibilities-icons {
-  position: relative;
-  height: 50%;
-  width: 50%;
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  right: 12%;
+  bottom: 50px;
 }
 
 .world-of-possibilities-icon-1 {
   position: absolute;
-  left: 80px;
-  bottom: 0px;
+  left: 60px;
+  top: 80px;
 }
 
 .world-of-possibilities-icon-2 {
   position: absolute;
   left: 190px;
-  bottom: 280px;
+  top: -70px;
 }
 
 .world-of-possibilities-icon-3 {
   position: absolute;
-  left: -10px;
-  bottom: 80px;
+  left: -20px;
+  top: 200px;
 }
 
 .world-of-possibilities-icon-4 {
   position: absolute;
-  left: 50px;
-  bottom: 230px;
+  left: 10px;
+  top: 50px;
 }
 
-/* .world-of-possibilities-brochure {
+.world-of-possibilities-brochure {
   max-width: 1180px;
   background-color: #0C434B;
   background-image: url("./assets/pattern-bg.webp");
@@ -1257,7 +1278,7 @@ line-height: 136%;
 
 .world-of-possibilities-brochure-left {
   padding: 67px 0px 92px 0px
-} */
+}
 
 /* Review section */
 
@@ -2451,10 +2472,6 @@ line-height: 136%;
   }
 
   .hero-section {
-    background-image: url('./assets/hero-section-bg-mob.webp');
-    background-position:bottom ;
-    background-repeat: no-repeat;
-    background-size: 980px 620px;
     margin: 0px 10px 0px 10px;
 
   }
@@ -2477,15 +2494,15 @@ line-height: 136%;
   }
   .hero-headline {
     width: 90%;
-    font-size: 55px;
-    line-height: 50px;
+    font-size: 60px;
+    line-height: 58px;
     text-align: center;
     padding-top: 124px;
     margin: auto;
 
   }
   .hero-left p {
-    width: 70%;
+    width: 90%;
     font-size: 17px;
     line-height: 130%;
     padding: 20px 10px 23px 10px
@@ -2496,32 +2513,32 @@ line-height: 136%;
     align-items: center;
     width: 100%;
     height: 550px;
-    background-image: url('./assets/heroSupply.webp');
-    background-position: center bottom;
-    background-size: contain;
-  transform: translateX(0px);
-
-    /* background-repeat: no-repeat; */
   }
-
+  .hero-right-img {
+    position: absolute;
+    right: 50%;
+    transform:translateX(50%);
+    height: 550px;
+    width: 626px;
+  }
   .hero-icons-main {
     position: relative;
     width: 50%;
-    height: 60%;
+    height: 30%;
   }
 
   .bag-icon {
     width: 180px;
     height: 125px;
     top: 60px;
-    left: -50px;
+    left: -70px;
   }
 
   .graph-icon2 {
-    width: 61px;
-    height: 61px;
-    top: 80px;
-    left: 260px;
+    width: 71px;
+    height: 71px;
+    top: 130px;
+    left: 280px;
     z-index: 1;
   }
 
@@ -2529,7 +2546,7 @@ line-height: 136%;
     width: 90px;
     height: 118px;
     top: 200px;
-    left: 230px;
+    left: 50px;
     z-index: 1;
   }
 
@@ -2597,6 +2614,9 @@ line-height: 136%;
 
   }
 
+  .why-swiss-school {
+    margin-top: -0px;
+  }
   .swiss-school-h1 {
     padding-left: 20px;
     padding-right: 28px;
@@ -2878,7 +2898,9 @@ line-height: 136%;
 /* 6-power-skills section */
 
 .power-skill-main {
-  margin-top: 40px;
+  margin-top: 38px;
+  padding-top: 50px;
+  border-radius: 50px;
 }
 
 .power-skill-main h1 {
@@ -3029,6 +3051,7 @@ line-height: 136%;
     padding-top: 40px;
     border-radius: 38px;
     margin-bottom: 41px;
+    height: 2300px;
   }
 
   .world-of-possibilities-main h1 {
@@ -3142,27 +3165,18 @@ line-height: 136%;
     padding: 0px 0px 0px 0px;
   }
 
-  .world-of-possibilities-bottom {
-    justify-content: flex-end;
-    align-items: center;
-    background-image: url('./assets/professional2.webp');
-    background-position: top;
-    background-size: cover;
-    height: 500px;
-    border-bottom-left-radius: 37px;
-    border-bottom-right-radius: 37px;
-  }
-
   .world-of-possibilities-icon-dot {
     position: absolute;
     width: 250px;
     height: 250px;
-    left: 20px;
+    left: 30px;
+    top: -50px;
   }
 
   .world-of-possibilities-icons {
-    position: relative;
-    height: 50%;
+    bottom: 0;
+    right: 0;
+    height: 250px;
     width: 50%;
   }
 
@@ -3170,8 +3184,8 @@ line-height: 136%;
     position: absolute;
     width: 135px;
     height: 115px;
-    left: 70px;
-    bottom: 80px;
+    left: 80px;
+    top: -20px;
   }
 
   .world-of-possibilities-icon-2 {
@@ -3179,15 +3193,15 @@ line-height: 136%;
     width: 70px;
     height: 70px;
     left: 120px;
-    bottom: 210px;
+    top: -80px;
   }
 
   .world-of-possibilities-icon-3 {
     position: absolute;
     width: 30px;
     height: 30px;
-    left: 0px;
-    bottom: 120px;
+    left: 15px;
+    top:50px;
   }
 
   .world-of-possibilities-icon-4 {
@@ -3195,10 +3209,10 @@ line-height: 136%;
     width: 46px;
     height: 46px;
     left: 40px;
-    bottom: 190px;
+    top: -30px;
   }
 
-  /* .world-of-possibilities-brochure {
+  .world-of-possibilities-brochure {
     width: 90%;
     background-color: #0C434B;
     border-radius: 44px;
@@ -3246,7 +3260,7 @@ line-height: 136%;
   .world-of-possibilities-brochure-left {
     width: 60%;
     padding: 0px 20px 40px 20px
-  } */
+  }
 
   .review-section-main h1 {
     max-width: 791px;
@@ -3911,10 +3925,6 @@ line-height: 136%;
   }
 
   .hero-section {
-    background-image: url('./assets/hero-section-bg-mob.webp');
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-size: contain;
     margin: 55px 10px 0px 10px;
     align-items: center;
     border-top-left-radius: 34px;
@@ -3954,51 +3964,52 @@ line-height: 136%;
     line-height: 136%;
     padding: 30px 10px 23px 10px
   }
-
+.hero-left h3 {
+  font-size: 15.718px;
+}
 
   .hero-right {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 457px;
-    background-image: url('./assets/hero-mob.webp');
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
-  transform: translateX(0px);
+    height: 342px;
 
   }
-
+  .hero-right-img {
+    position: absolute;
+    height:342px;
+    width: 100%;
+  }
   .hero-icons-main {
     position: relative;
     width: 280px;
-    height: 60%;
+    height: 50%;
 
   }
 
   .bag-icon {
     position: absolute;
-    width: 110px;
-    height: 95px;
-    top: 90px;
-    left: -45px;
+    width: 97px;
+    height: 88px;
+    top: 70px;
+    left: -5px;
   }
 
   .graph-icon2 {
     position: absolute;
-    width: 58px;
-    height: 58px;
-    top: 70px;
+    width: 47px;
+    height: 59px;
+    top: 110px;
     left: 200px;
     z-index: 1;
   }
 
   .rank-icon {
     position: absolute;
-    width: 90px;
-    height: 118px;
-    top: 200px;
-    left: 140px;
+    width: 69px;
+    height: 90px;
+    top: 160px;
+    left: 80px;
     z-index: 1;
   }
 
@@ -4048,7 +4059,7 @@ line-height: 136%;
 
   .react-multi-carousel-list {
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: hidden!important;
     align-items: flex-start;
     height: 190px;
   }
@@ -4089,6 +4100,9 @@ line-height: 136%;
     z-index: 0;
   }
 
+  .why-swiss-school {
+    margin-top: -20px;
+  }
   .swiss-school-h1 {
     max-width: 80%;
     padding-left: 0px;
@@ -4369,8 +4383,9 @@ line-height: 136%;
   /* 6-power-skills section */
 
   .power-skill-main {
-    padding-bottom: 36px;
-    margin-top: 40px;
+    margin-top: 34px;
+    padding-top: 43px;
+    border-radius: 39px;
   }
 
   .power-skill-main h1 {
@@ -4523,6 +4538,8 @@ line-height: 136%;
     padding-top: 40px;
     border-radius: 38px;
     margin-bottom: 41px;
+    height:auto ;
+    padding-bottom: 250px;
   }
 
   .world-of-possibilities-main h1 {
@@ -4622,62 +4639,52 @@ line-height: 136%;
     padding: 0px 0px 0px 0px;
   }
 
-  .world-of-possibilities-bottom {
-    justify-content: flex-end;
-    align-items: center;
-    background-image: url('./assets/professional2.webp');
-    background-position: center top;
-    height: 316px;
-    border-bottom-left-radius: 37px;
-    border-bottom-right-radius: 37px;
-  }
 
   .world-of-possibilities-icon-dot {
     position: absolute;
-    left: -10px;
+    left: 10px;
+    top: 0;
     width: 166px;
     height: 166px;
   }
 
   .world-of-possibilities-icons {
-    position: relative;
-    height: 50%;
-    width: 50%;
+    position: absolute;
+    height: 200px;
+    width: 60%;
+    right: -10px;
+    bottom: -30px;
   }
 
   .world-of-possibilities-icon-1 {
-    position: absolute;
     width: 105px;
     height: 96px;
-    left: 10px;
-    bottom: 30px;
+    left: 35px;
+    top: 30px;
   }
 
   .world-of-possibilities-icon-2 {
-    position: absolute;
     width: 50px;
     height: 50px;
     left: 80px;
-    bottom: 120px;
+    top: -25px;
   }
 
   .world-of-possibilities-icon-3 {
-    position: absolute;
     width: 18px;
     height: 18px;
-    left: -10px;
-    bottom: 100px;
+    left: 0px;
+    top: 70px;
   }
 
   .world-of-possibilities-icon-4 {
-    position: absolute;
     width: 36px;
     height: 36px;
     left: 20px;
-    bottom: 130px;
+    top: 0px;
   }
 
-  /* .world-of-possibilities-brochure {
+  .world-of-possibilities-brochure {
     width: 90%;
     background-image: url("./assets/pattern-bg-mob.webp");
     background-position: bottom;
@@ -4728,7 +4735,7 @@ line-height: 136%;
   .world-of-possibilities-brochure-left {
     width: 100%;
     padding: 0px 0px 0px 0px
-  } */
+  }
 
   /* review-section-main */
 
