@@ -1,0 +1,566 @@
+/* 
+.popup-main {
+    width: 817px;
+    border-radius: 52.237px;
+    background: #0C434B;
+    background-image: url("../../assets/svg/brochure-bg.svg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    padding: 53px 54px 0px 52px;
+}
+
+.popup-thank-you {
+    height: 567px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-thank-you h2 {
+    width: 608px;
+    color: white;
+    text-align: center;
+    font-size: 48px;
+    line-height: 50px;
+    margin-bottom: 25px;
+}
+
+.popup-thank-you p {
+    width: 419px;
+    color: rgba(255, 255, 255, 0.76);
+    text-align: center;
+    font-size: 14.585px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px;
+    margin-bottom: 23px;
+}
+
+.thank-you-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #FFF;
+    border-radius: 32px;
+    padding: 5px 25px 6px 8px;
+}
+
+.thank-you-button img {
+    width: 36px;
+    height: 36px;
+}
+
+.thank-you-button h6 {
+    color: #fff;
+    text-align: center;
+    font-size: 17.207px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.006px;
+}
+
+.fades-enter {
+    opacity: 0;
+
+}
+
+.fades-enter-active {
+    opacity: 1;
+}
+
+.fades-exit {
+    opacity: 1;
+}
+
+.fades-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}
+
+
+.popupp-enter {
+    opacity: 0;
+}
+
+.popupp-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.popupp-exit {
+    opacity: 1;
+}
+
+.popupp-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-out
+}
+
+
+.popup-close-button {
+    position: absolute;
+    right: 7%;
+}
+
+.popup-main h1 {
+    width: 468px;
+    margin: auto;
+    margin-bottom: 12px;
+    color: #FFF;
+    text-align: center;
+    font-size: 41.631px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 45px;
+}
+
+.popup-main-description {
+    font-family: 'SK Modernist Regular';
+    text-align: center;
+    width: 500px;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 14.04px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: .6px;
+}
+
+.popup-sub {
+    display: flex;
+    align-items: flex-start;
+}
+
+.popup-form {
+    width: 332px;
+    padding: 10px 0px 50px 0px;
+}
+
+.popup-form h5 {
+    width: 100px;
+    font-family: 'SK Modernist Bold';
+    color: #FFF;
+    text-align: left;
+    padding: 15px 0px 8px 26px;
+    font-size: 17.671px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18.996px;
+}
+
+.popup-form input {
+    width: 331.102px;
+    height: 54.463px;
+    padding-bottom: 3px;
+    padding-left: 40px;
+    flex-shrink: 0;
+    border-radius: 52.59px;
+    border: 0.72px solid rgba(0, 0, 0, 0.47);
+    background: #FCFCFC;
+}
+
+.popup-form input::placeholder {
+    font-size: 16.382px;
+    color: rgba(91, 84, 84, 0.65);
+}
+
+.popup-form button {
+    width: 331.007px;
+    height: 51.75px;
+    margin-top: 23px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+    border-radius: 79.331px;
+    font-size: 18.042px;
+    text-transform: capitalize;
+}
+
+.popup-form p {
+    width: 253px;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.82);
+    text-align: center;
+    font-size: 10.147px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14.459px;
+    letter-spacing: .2px;
+}
+
+.popup-img-mob {
+    display: none;
+}
+
+.popup-sub .react-tel-input .form-control {
+    width: 331px!important;
+    height: 54px!important;
+    padding-left: 70px!important;
+    flex-shrink: 0!important;
+    border-radius: 52px!important;
+    border: 0.72px solid rgba(0, 0, 0, 0.47)!important;
+    background: #FCFCFC!important;
+    font-size: 100%!important;
+    margin-top: 0px!important;
+}
+
+.popup-sub .form-control {
+    position: relative;
+}
+
+.popup-sub .react-tel-input .flag-dropdown {
+    position: absolute!important;
+    background-color: transparent!important;
+    border-radius: 5px!important;
+    top: -05%!important;
+    transform: translate(50%, 50%)!important;
+    height: 30px!important;
+}
+
+@media only screen and (max-width: 1180px) {
+
+    .popup-main {
+        width: 590px;
+        border-radius: 37px;
+        background-image: url("../../assets/svg/brochure-bg.svg");
+        padding: 38px 37px 0px 40px;
+    }
+
+    .popup-thank-you {
+        height: 410px;
+    }
+
+    .popup-thank-you h2 {
+        width: 90%;
+        font-size: 38px;
+        line-height: 38px;
+        margin-bottom: 15px;
+    }
+
+    .popup-thank-you p {
+        width: 70%;
+        text-align: center;
+        font-size: 11px;
+        line-height: 14px;
+        margin-bottom: 23px;
+    }
+
+    .thank-you-button {
+        gap: 4px;
+        border-radius: 25px;
+        padding: 5px 18px 6px 8px;
+    }
+
+    .thank-you-button img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .thank-you-button h6 {
+        font-size: 14px;
+    }
+
+
+    .popup-close-button {
+        position: absolute;
+        right: 7%;
+    }
+
+    .popup-main h1 {
+        width: 356px;
+        margin-bottom: 10px;
+        font-size: 31px;
+        line-height: 45px;
+    }
+
+    .popup-main-description {
+        text-align: center;
+        letter-spacing: .3;
+        width: 300px;
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .popup-sub {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .popup-form {
+        width: 240px;
+        padding: 10px 0px 37px 0px;
+    }
+
+    .popup-form h5 {
+        width: 50px;
+        padding: 11px 0px 4px 17px;
+        font-size: 13px;
+        line-height: 13px;
+    }
+
+    .popup-form input {
+        padding-bottom: 3px;
+        padding-left: 22px;
+        width: 239px;
+        height: 39px;
+        border-radius: 38px;
+        border: 0.521px solid rgba(0, 0, 0, 0.47);
+    }
+
+    .popup-form input::placeholder {
+        font-size: 11px;
+    }
+
+    .popup-form button {
+        width: 239px;
+        height: 37px;
+        margin-top: 17px;
+        margin-bottom: 5px;
+        border-radius: 57px;
+        font-size: 13px;
+    }
+
+    .popup-form p {
+        width: 182px;
+        font-size: 7px;
+        line-height: 10px;
+    }
+
+    .popup-img-mob {
+        display: none;
+    }
+
+    .popup-sub .react-tel-input .form-control {
+        width: 239px!important;
+        height: 39px!important;
+        padding-left: 65px!important;
+        border-radius: 38px!important;
+        border: 0.521px solid rgba(0, 0, 0, 0.47)!important;
+        font-size: 100%!important;
+    }
+
+    .popup-sub .react-tel-input .flag-dropdown {
+        top: -10%!important;
+        height: 25px!important;
+    }
+
+}
+
+@media only screen and (max-width: 640px) {
+
+    .popup-main {
+        width: 355px;
+        border-radius: 36px;
+        background-image: url("../../assets/svg/brochure-bg-mob.svg");
+        background-position: bottom;
+        padding: 37px 35px 46px 31px;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+    }
+
+    .popup-thank-you {
+        height: 480px;
+    }
+
+    .popup-thank-you h2 {
+        font-size: 35px;
+        line-height: 38px;
+        margin-bottom: 10px;
+    }
+
+    .popup-thank-you p {
+        width: 80%;
+        text-align: center;
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 20px;
+    }
+
+    .thank-you-button {
+        gap: 4px;
+        border-radius: 25px;
+        padding: 5px 18px 6px 8px;
+    }
+
+    .thank-you-button img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .thank-you-button h6 {
+        font-size: 12px;
+    }
+
+
+    .popup-close-button {
+        position: absolute;
+        right: 7%;
+        width: 21px;
+        height: 21px;
+    }
+
+    .popup-main h1 {
+        width: 300px;
+        margin-bottom: 0px;
+        font-size: 31px;
+        line-height: 30px;
+        padding-top: 34px;
+    }
+
+    .popup-main-description {
+        display: none;
+    }
+
+    .popup-sub {
+        flex-direction: column;
+    }
+
+    .popup-form {
+        width: 285px;
+        padding: 0px 0px 0px 0px;
+    }
+
+    .popup-form h5 {
+        width: 50px;
+        padding: 13px 0px 7px 20px;
+        font-size: 15px;
+        line-height: 16px;
+    }
+
+    .popup-form input {
+        padding-bottom: 3px;
+        padding-left: 26px;
+        width: 285px;
+        height: 47px;
+        border-radius: 45px;
+        border: 0.622px solid rgba(0, 0, 0, 0.47);
+    }
+
+    .popup-form input::placeholder {
+        font-size: 14px;
+    }
+
+    .popup-form button {
+        width: 285px;
+        height: 44px;
+        margin-top: 20px;
+        margin-bottom: 6px;
+        border-radius: 68px;
+        font-size: 15px;
+    }
+
+    .popup-form p {
+        width: 218px;
+        font-size: 8px;
+        line-height: 12px;
+    }
+
+    .popup-img-desktop {
+        display: none;
+    }
+
+    .popup-img-mob {
+        display: block;
+        position: absolute;
+        height: 313px;
+        top: 0;
+        right: 0;
+        z-index: -1;
+
+    }
+
+    .popup-sub .react-tel-input .form-control {
+        width: 285px!important;
+        height: 47px!important;
+        padding-left: 65px!important;
+        border-radius: 68px!important;
+    }
+
+    .popup-sub .react-tel-input .flag-dropdown {
+        top: 0%!important;
+        height: 25px!important;
+    }
+
+}
+
+@media only screen and (max-width:325px) {
+
+    .popup-main {
+        width: 98%;
+        border-radius: 25px;
+        padding: 27px 25px 26px 21px;
+    }
+
+    .popup-thank-you h2 {
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .popup-thank-you p {
+        width: 80%;
+        font-size: 8px;
+        line-height: 12px;
+    }
+
+    .thank-you-button h6 {
+        font-size: 10px;
+    }
+
+    .popup-close-button {
+        right: 10%;
+        width: 20px;
+        height: 20px;
+    }
+
+    .popup-main h1 {
+        width: 85%;
+        font-size: 27px;
+        padding-top: 25px;
+    }
+
+    .popup-form {
+        width: 95%;
+        padding: 0px 0px 0px 0px;
+    }
+
+    .popup-form h5 {
+        width: 50px;
+        padding: 13px 0px 7px 20px;
+        font-size: 15px;
+        line-height: 16px;
+    }
+
+    .popup-form input {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .popup-form button {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .popup-img-mob {
+        height: 240px;
+    }
+
+    .popup-sub .react-tel-input .form-control {
+        width: 100%!important;
+        border-radius: 20px!important;
+    }
+
+    .popup-sub .react-tel-input .flag-dropdown {
+        top: 0%!important;
+        height: 25px!important;
+    }
+
+} */

@@ -1,4 +1,8 @@
 import React, { useEffect, useState, Suspense, lazy } from "react";
+import { PopupProvider, usePopup } from './components/Hoocks/PopupContext';
+import { debounce } from 'lodash';
+import Popup from './components/Popup_page/popup'
+
 import Header from "./components/Header/header";
 import Hero from "./components/Hero/hero";
 import Carousel from "./components/Carousel/ResponsiveCarousel";
@@ -21,7 +25,31 @@ import GoogleTagManager from "./components/Google_tag_mgr/GoogleTagManager";
 
 function App() {
 
+  const { isPopupOpen, togglePopup } = usePopup();
+  const [exitIntentTriggered, setExitIntentTriggered] = useState(false);
+
+  useEffect(() => {
+    const handleMouseMove = debounce((e) => {
+      if (e.clientY <= 50 && !isPopupOpen && !exitIntentTriggered) {
+        setExitIntentTriggered(true);
+        togglePopup();
+      }
+    }, 100);
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      handleMouseMove.cancel();
+    };
+  }, [togglePopup, isPopupOpen, exitIntentTriggered]);
+
+  const handleClosePopup = () => {
+    togglePopup();
+    setExitIntentTriggered(false);
+  };
+
   return (
+    <PopupProvider>
       <div className="body">
         <GoogleTagManager/>
         <Header />
@@ -44,7 +72,9 @@ function App() {
         <Student_support />
         <Icf_certification />
         <Footer />
+    {isPopupOpen && <Popup closePopup={handleClosePopup} />}
       </div>
+      </PopupProvider>
   );
 }
 

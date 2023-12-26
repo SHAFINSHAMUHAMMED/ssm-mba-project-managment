@@ -3,8 +3,8 @@ import ButtonDark from "../Buttons/buttonDark";
 import Claim_description from "../Description/claim_description";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import Popup from "../Popup_page/popup";
-// import { usePopup } from "../Hoocks/PopupContext";
+import Popup from "../Popup_page/popup";
+import { usePopup } from "../Hoocks/PopupContext";
 
 import university_icon_large from "../../assets/svg/university-icon-large.svg";
 import up_graph from "../../assets/svg/up-graph-icon.svg";
@@ -16,7 +16,7 @@ import swisMba from "../../assets/swiss-mba.webp";
 import swisMbaTab from "../../assets/swiss-mba-tab.webp";
 
 function world_of_possibilities() {
-  // const { isPopupOpen, togglePopup } = usePopup();
+  const { isPopupOpen, togglePopup } = usePopup();
 
   useEffect(() => {
     AOS.init({ duration: 2000 });
@@ -408,7 +408,7 @@ function world_of_possibilities() {
           </p>
           <div className="flex gap-3 sm:gap-6 items-center ">
           <a 
-          // onClick={togglePopup}
+          onClick={togglePopup}
           className="flex gap-3 sm:gap-6 items-center cursor-pointer">
             <h3 className="underline">Download Free Brochure Now</h3>
             
@@ -434,7 +434,7 @@ function world_of_possibilities() {
         <img className='swiss-img-1' src={swisMba} alt="" />
         <img className='swiss-img-2' src={swisMbaTab} alt="" />
       </div>
-      {/* {isPopupOpen && <Popup  />} */}
+      {isPopupOpen && <Popup closePopup={togglePopup} />}
     </div>
   );
 }
