@@ -222,9 +222,8 @@ button {
 .hero-left {
   display: flex;
   flex-direction: column;
-
   width: 540px;
-  padding-bottom: 64px;
+  padding-bottom: 20px;
   padding-top: 50px;
 }
 
