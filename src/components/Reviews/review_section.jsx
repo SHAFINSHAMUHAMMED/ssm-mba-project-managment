@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useRef, Suspense } from "react";
+import "./review.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Marquee from "react-fast-marquee";
 import ButtonDark from "../Buttons/buttonDark";
 import { Link, Element } from "react-scroll";
 import Claim_description from "../Description/claim_description";
-import { BounceLoader } from "react-spinners";
+import { usePopup } from "../Hoocks/PopupContext";
+import { ClipLoader } from "react-spinners";
 
+import reviewVideo from "../../assets/review-video-thumb.webp"
 import videoThumb1 from "../../assets/videoThumb1.webp";
 import videoThumb2 from "../../assets/videoThumb2.webp";
 import videoThumb3 from "../../assets/videoThumb3.webp";
+import videoThumb4 from "../../assets/videoThumb4.webp";
 import stars_review from "../../assets/svg/stars-review.svg";
 import verified_review from "../../assets/svg/verified-review.svg";
 
@@ -21,7 +25,6 @@ import bijuraj from "../../assets/bijuraj.png";
 import gwendolyne from "../../assets/gwendolyne.png";
 import vaishak from "../../assets/vaishak.png";
 import alice from "../../assets/alice.png";
-
 
 const ReactPlayer = React.lazy(() => import("react-player"));
 
@@ -36,20 +39,30 @@ function Loader() {
         textAlign: "center",
       }}
     >
-      <BounceLoader color="#0B434B" />
-      <p>Loading video...</p>
+       <ClipLoader color={"#0B434B"} size={50} />
     </div>
   );
 }
 
 function ReviewSection() {
   const [currentVideoUrl, setCurrentVideoUrl] = useState("");
+  const { isPopupOpen, togglePopup } = usePopup();
+  const [showVideo, setShowVideo] = useState(false);
 
-  useEffect(() => {
-    const defaultVideoUrl = "https://youtu.be/LJ-LdPUnywM?si=PZr2husnFLlRF4Q4";
-    setCurrentVideoUrl(defaultVideoUrl);
-  }, []);
+  const videoUrls = [
+    "https://youtu.be/9n9w1LNdXrU?si=WWLgRiyEUa8jpFAz",
+    "https://youtu.be/1QPnOvitSbs?si=vJY8fNakE8gpXVsh",
+    "https://youtu.be/wnukPED7Jn0?si=_oVUClOcrRQc2ST0",
+   "https://youtu.be/LJ-LdPUnywM?si=PZr2husnFLlRF4Q4",
 
+
+  ];
+  const updateVideoUrl = (currentIndex) => {
+    const newUrl = videoUrls[currentIndex];
+    setCurrentVideoUrl(newUrl);
+    setShowVideo(true);
+    setPlaying(true);
+  };
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -71,27 +84,41 @@ function ReviewSection() {
   };
   const [playing, setPlaying] = useState(false);
   const carouselRef = useRef(null);
+
   const handlePlayPause = () => {
+    if (!showVideo) {
+      const defaultVideoUrl = "https://youtu.be/9n9w1LNdXrU?si=WWLgRiyEUa8jpFAz";
+      setCurrentVideoUrl(defaultVideoUrl);
+      setShowVideo(true);
+    }
     setPlaying(!playing);
   };
-  const handleCardClick = (newUrl) => {
+  
+
+  const handleCardClick = (newUrl) => {;
     setCurrentVideoUrl(newUrl);
+    setShowVideo(true);
     setPlaying(true);
-  };
-  const goToNext = () => {
-    if (carouselRef.current) {
-      carouselRef.current.next();
-    }
-  };
+};
+
+const goToNext = () => {
+  if (carouselRef.current) {
+    const nextIndex = (carouselRef.current.state.currentSlide + 1) % videoUrls.length;
+    updateVideoUrl(nextIndex);
+    carouselRef.current.next();
+  }
+};
 
   // Function to move to the previous slide
   const goToPrev = () => {
     if (carouselRef.current) {
+      const prevIndex = (carouselRef.current.state.currentSlide - 1 + videoUrls.length) % videoUrls.length;
+      updateVideoUrl(prevIndex);
       carouselRef.current.previous();
     }
   };
   return (
-    <div className={`review-section-main`}>
+    <div id="review" className={`review-section-main ${isPopupOpen ? "blur-effect" : ""}`}>
       <h1>
         See What Our <span className="highlight-green">Graduates Have</span>{" "}
         <span className="highlight-green"> To Say</span> About Us
@@ -135,20 +162,31 @@ function ReviewSection() {
             />
           </svg>
         </button>
-        <div className="player-container">
+        <div className="player-container"  style={{ paddingTop: showVideo ? '40.25%' : '0' }} >
+          {showVideo ? (
           <Suspense fallback={<Loader />}>
             <ReactPlayer
               url={currentVideoUrl}
               playing={playing}
+              controls={true}
               width="100%"
               height="100%"
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                backgroundColor: "black",
+              }}
               onPlay={() => setPlaying(true)}
               onPause={() => setPlaying(false)}
               onEnded={() => setPlaying(false)}
             />
           </Suspense>
+          ):(
+            <img className="h-[100%] object-contain" src={reviewVideo} onClick={() => handleCardClick('https://youtu.be/9n9w1LNdXrU?si=WWLgRiyEUa8jpFAz')} alt="" />
+          )}
           {!playing && (
-            <div className="custom-play-button" onClick={handlePlayPause}>
+            <div className="custom-play-button2" onClick={handlePlayPause}>
               {/* <div className="pulse-circle"></div> */}
 
               <svg
@@ -179,9 +217,9 @@ function ReviewSection() {
                     width="156.573"
                     height="156.573"
                     filterUnits="userSpaceOnUse"
-                    color-interpolation-filters="sRGB"
+                    colorInterpolationFilters="sRGB"
                   >
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feGaussianBlur
                       in="BackgroundImageFix"
                       stdDeviation="3.39037"
@@ -223,11 +261,8 @@ function ReviewSection() {
                 )
               }
             >
-              <img
-                className=" sm:w-auto"
-                src={videoThumb1}
-                alt=""
-              />
+              <img className=" sm:w-auto review-video-thumb-img" src={videoThumb1} alt="" />
+
               <svg
                 className="play-button"
                 xmlns="http://www.w3.org/2000/svg"
@@ -239,12 +274,41 @@ function ReviewSection() {
                 <path
                   d="M56.2503 46.1795L33.3996 60.4221C31.8976 61.3582 29.952 60.2783 29.952 58.5085L29.952 30.0234C29.952 28.2536 31.8976 27.1736 33.3996 28.1098L56.2503 42.3524C57.6665 43.2351 57.6665 45.2968 56.2503 46.1795Z"
                   stroke="white"
-                  stroke-width="3"
+                  strokeWidth="3"
                 />
                 <path
                   d="M79.5879 43.5C79.5879 67.0456 61.9247 86 40.2939 86C18.6632 86 1 67.0456 1 43.5C1 19.9544 18.6632 1 40.2939 1C61.9247 1 79.5879 19.9544 79.5879 43.5Z"
                   stroke="white"
-                  stroke-width="3"
+                  strokeWidth="3"
+                />
+              </svg>
+            </div>
+            <div
+              className="review-video-sub-card"
+              onClick={() =>
+                handleCardClick(
+                  "https://youtu.be/9n9w1LNdXrU?si=WWLgRiyEUa8jpFAz"
+                )
+              }
+            >
+              <img className=" sm:w-auto review-video-thumb-img" src={videoThumb4} alt="" />
+              <svg
+                className="play-button"
+                xmlns="http://www.w3.org/2000/svg"
+                width="81"
+                height="87"
+                viewBox="0 0 81 87"
+                fill="none"
+              >
+                <path
+                  d="M56.2503 46.1795L33.3996 60.4221C31.8976 61.3582 29.952 60.2783 29.952 58.5085L29.952 30.0234C29.952 28.2536 31.8976 27.1736 33.3996 28.1098L56.2503 42.3524C57.6665 43.2351 57.6665 45.2968 56.2503 46.1795Z"
+                  stroke="white"
+                  strokeWidth="3"
+                />
+                <path
+                  d="M79.5879 43.5C79.5879 67.0456 61.9247 86 40.2939 86C18.6632 86 1 67.0456 1 43.5C1 19.9544 18.6632 1 40.2939 1C61.9247 1 79.5879 19.9544 79.5879 43.5Z"
+                  stroke="white"
+                  strokeWidth="3"
                 />
               </svg>
             </div>
@@ -256,11 +320,7 @@ function ReviewSection() {
                 )
               }
             >
-              <img
-                className=" sm:w-auto"
-                src={videoThumb2}
-                alt=""
-              />
+              <img className=" sm:w-auto review-video-thumb-img" src={videoThumb2} alt="" />
               <svg
                 className="play-button"
                 xmlns="http://www.w3.org/2000/svg"
@@ -272,12 +332,12 @@ function ReviewSection() {
                 <path
                   d="M56.2503 46.1795L33.3996 60.4221C31.8976 61.3582 29.952 60.2783 29.952 58.5085L29.952 30.0234C29.952 28.2536 31.8976 27.1736 33.3996 28.1098L56.2503 42.3524C57.6665 43.2351 57.6665 45.2968 56.2503 46.1795Z"
                   stroke="white"
-                  stroke-width="3"
+                  strokeWidth="3"
                 />
                 <path
                   d="M79.5879 43.5C79.5879 67.0456 61.9247 86 40.2939 86C18.6632 86 1 67.0456 1 43.5C1 19.9544 18.6632 1 40.2939 1C61.9247 1 79.5879 19.9544 79.5879 43.5Z"
                   stroke="white"
-                  stroke-width="3"
+                  strokeWidth="3"
                 />
               </svg>
             </div>
@@ -289,11 +349,7 @@ function ReviewSection() {
                 )
               }
             >
-              <img
-                className=" sm:w-auto"
-                src={videoThumb3}
-                alt=""
-              />
+              <img className=" sm:w-auto review-video-thumb-img" src={videoThumb3} alt="" />
               <svg
                 className="play-button"
                 xmlns="http://www.w3.org/2000/svg"
@@ -305,45 +361,12 @@ function ReviewSection() {
                 <path
                   d="M56.2503 46.1795L33.3996 60.4221C31.8976 61.3582 29.952 60.2783 29.952 58.5085L29.952 30.0234C29.952 28.2536 31.8976 27.1736 33.3996 28.1098L56.2503 42.3524C57.6665 43.2351 57.6665 45.2968 56.2503 46.1795Z"
                   stroke="white"
-                  stroke-width="3"
+                  strokeWidth="3"
                 />
                 <path
                   d="M79.5879 43.5C79.5879 67.0456 61.9247 86 40.2939 86C18.6632 86 1 67.0456 1 43.5C1 19.9544 18.6632 1 40.2939 1C61.9247 1 79.5879 19.9544 79.5879 43.5Z"
                   stroke="white"
-                  stroke-width="3"
-                />
-              </svg>
-            </div>
-            <div
-              className="review-video-sub-card"
-              onClick={() =>
-                handleCardClick(
-                  "https://youtu.be/LJ-LdPUnywM?si=PZr2husnFLlRF4Q4"
-                )
-              }
-            >
-              <img
-                className=" sm:w-auto"
-                src={videoThumb1}
-                alt=""
-              />
-              <svg
-                className="play-button"
-                xmlns="http://www.w3.org/2000/svg"
-                width="81"
-                height="87"
-                viewBox="0 0 81 87"
-                fill="none"
-              >
-                <path
-                  d="M56.2503 46.1795L33.3996 60.4221C31.8976 61.3582 29.952 60.2783 29.952 58.5085L29.952 30.0234C29.952 28.2536 31.8976 27.1736 33.3996 28.1098L56.2503 42.3524C57.6665 43.2351 57.6665 45.2968 56.2503 46.1795Z"
-                  stroke="white"
-                  stroke-width="3"
-                />
-                <path
-                  d="M79.5879 43.5C79.5879 67.0456 61.9247 86 40.2939 86C18.6632 86 1 67.0456 1 43.5C1 19.9544 18.6632 1 40.2939 1C61.9247 1 79.5879 19.9544 79.5879 43.5Z"
-                  stroke="white"
-                  stroke-width="3"
+                  strokeWidth="3"
                 />
               </svg>
             </div>
@@ -373,11 +396,7 @@ function ReviewSection() {
                     fill="#0B434B"
                   />
                 </svg>
-                <img
-                  className="review-star"
-                  src={stars_review}
-                  alt=""
-                />
+                <img className="review-star" src={stars_review} alt="" />
               </div>
               <p className="">
                 The flexibility of the programs, its budget friendly & the staff
@@ -391,18 +410,10 @@ function ReviewSection() {
               </p>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="review-user-icon"
-                    src={chef}
-                    alt=""
-                  />
+                  <img className="review-user-icon" src={chef} alt="" />
                   <h5>Chef Jayaweera</h5>
                 </div>
-                <img
-                  className="review-verified"
-                  src={verified_review}
-                  alt=""
-                />
+                <img className="review-verified" src={verified_review} alt="" />
               </div>
             </div>
             <div className="user-review-card">
@@ -424,35 +435,24 @@ function ReviewSection() {
                     fill="#0B434B"
                   />
                 </svg>
-                <img
-                  className="review-star"
-                  src={stars_review}
-                  alt=""
-                />
+                <img className="review-star" src={stars_review} alt="" />
               </div>
               <p className="">
                 I always wanted to do an MBA from the Institute which offers
-                online education but with good quality. I done my MBA in Project management from SSM with the help of Learner University
-                College Dubai.The MBA in Project management from Swiss
+                online education but with good quality. I done my MBA in Supply
+                chain management from SSM with the help of Learner University
+                College Dubai.The MBA in Supply chain management from Swiss
                 School of Management and the services provided by Learners were
                 well suited according to my need. The Fees is also good and the
                 staff is very helpful
               </p>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="review-user-icon"
-                    src={albin}
-                    alt=""
-                  />
+                  <img className="review-user-icon" src={albin} alt="" />
 
                   <h5>Albin Baby</h5>
                 </div>
-                <img
-                  className="review-verified"
-                  src={verified_review}
-                  alt=""
-                />
+                <img className="review-verified" src={verified_review} alt="" />
               </div>
             </div>
             <div className="user-review-card">
@@ -474,11 +474,7 @@ function ReviewSection() {
                     fill="#0B434B"
                   />
                 </svg>
-                <img
-                  className="review-star"
-                  src={stars_review}
-                  alt=""
-                />
+                <img className="review-star" src={stars_review} alt="" />
               </div>
               <p className="">
                 Learner's Education provides professional service to it's
@@ -492,18 +488,10 @@ function ReviewSection() {
               </p>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="review-user-icon"
-                    src={hisham}
-                    alt=""
-                  />
+                  <img className="review-user-icon" src={hisham} alt="" />
                   <h5>Hisham</h5>
                 </div>
-                <img
-                  className="review-verified"
-                  src={verified_review}
-                  alt=""
-                />
+                <img className="review-verified" src={verified_review} alt="" />
               </div>
             </div>
             <div className="user-review-card">
@@ -525,11 +513,7 @@ function ReviewSection() {
                     fill="#0B434B"
                   />
                 </svg>
-                <img
-                  className="review-star"
-                  src={stars_review}
-                  alt=""
-                />
+                <img className="review-star" src={stars_review} alt="" />
               </div>
               <p className="">
                 Enrolling with Learners Education UAE has been the most
@@ -541,18 +525,10 @@ function ReviewSection() {
               </p>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="review-user-icon"
-                    src={rosette}
-                    alt=""
-                  />
+                  <img className="review-user-icon" src={rosette} alt="" />
                   <h5>Rosette Leano</h5>
                 </div>
-                <img
-                  className="review-verified"
-                  src={verified_review}
-                  alt=""
-                />
+                <img className="review-verified" src={verified_review} alt="" />
               </div>
             </div>
           </div>
@@ -578,11 +554,7 @@ function ReviewSection() {
                     fill="#0B434B"
                   />
                 </svg>
-                <img
-                  className="review-star"
-                  src={stars_review}
-                  alt=""
-                />
+                <img className="review-star" src={stars_review} alt="" />
               </div>
               <p className="">
                 Learners is the best higher education platform for working
@@ -593,18 +565,10 @@ function ReviewSection() {
               </p>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="review-user-icon"
-                    src={bijuraj}
-                    alt=""
-                  />
+                  <img className="review-user-icon" src={bijuraj} alt="" />
                   <h5>Bijuraj k</h5>
                 </div>
-                <img
-                  className="review-verified"
-                  src={verified_review}
-                  alt=""
-                />
+                <img className="review-verified" src={verified_review} alt="" />
               </div>
             </div>
             <div className="user-review-card">
@@ -626,11 +590,7 @@ function ReviewSection() {
                     fill="#0B434B"
                   />
                 </svg>
-                <img
-                  className="review-star"
-                  src={stars_review}
-                  alt=""
-                />
+                <img className="review-star" src={stars_review} alt="" />
               </div>
               <p className="">
                 The perfect institute which believes and strives for quality.
@@ -642,18 +602,10 @@ function ReviewSection() {
               </p>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="review-user-icon"
-                    src={gwendolyne}
-                    alt=""
-                  />
+                  <img className="review-user-icon" src={gwendolyne} alt="" />
                   <h5>Gwendolyne Quinn</h5>
                 </div>
-                <img
-                  className="review-verified"
-                  src={verified_review}
-                  alt=""
-                />
+                <img className="review-verified" src={verified_review} alt="" />
               </div>
             </div>
             <div className="user-review-card">
@@ -675,11 +627,7 @@ function ReviewSection() {
                     fill="#0B434B"
                   />
                 </svg>
-                <img
-                  className="review-star"
-                  src={stars_review}
-                  alt=""
-                />
+                <img className="review-star" src={stars_review} alt="" />
               </div>
               <p className="">
                 I recommend this institution to all those who are looking for
@@ -693,18 +641,10 @@ function ReviewSection() {
               </p>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="review-user-icon"
-                    src={vaishak}
-                    alt=""
-                  />
+                  <img className="review-user-icon" src={vaishak} alt="" />
                   <h5>Vaisakh Panezhath</h5>
                 </div>
-                <img
-                  className="review-verified"
-                  src={verified_review}
-                  alt=""
-                />
+                <img className="review-verified" src={verified_review} alt="" />
               </div>
             </div>
             <div className="user-review-card">
@@ -726,11 +666,7 @@ function ReviewSection() {
                     fill="#0B434B"
                   />
                 </svg>
-                <img
-                  className="review-star"
-                  src={stars_review}
-                  alt=""
-                />
+                <img className="review-star" src={stars_review} alt="" />
               </div>
               <p className="">
                 Learners Education is a fantastic learning platform for students
@@ -745,34 +681,27 @@ function ReviewSection() {
               </p>
               <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                  <img
-                    className="review-user-icon"
-                    src={alice}
-                    alt=""
-                  />
+                  <img className="review-user-icon" src={alice} alt="" />
                   <h5>Alice Joanna</h5>
                 </div>
-                <img
-                  className="review-verified"
-                  src={verified_review}
-                  alt=""
-                />
+                <img className="review-verified" src={verified_review} alt="" />
               </div>
             </div>
           </div>
         </Marquee>
       </div>
       <div id="NewRootRoot" className="flex justify-center w-full ">
-    <Link
-    to='contactForm'
-    // spy={true}
-   smooth={true}
-     duration={2800}
-     delay={200}
-    className=" light-effect-button button bg-[#0b434b] w-[95%] sm:w-[539px]  rounded-[56px] sm:rounded-[91px] pt-[25px] pb-[25px] text-[15px] md:text-[15px] xl:text-[23px] font-bold cursor-pointer">
-      Start Your Journey Now
-    </Link>
-  </div>
+        <Link
+          to="contactForm"
+          // spy={true}
+          smooth={true}
+          duration={2800}
+          delay={200}
+          className=" light-effect-button button bg-[#0b434b] w-[95%] sm:w-[539px]  rounded-[56px] sm:rounded-[91px] pt-[25px] pb-[25px] text-[15px] md:text-[15px] xl:text-[23px] font-bold cursor-pointer"
+        >
+          Start Your Journey Now
+        </Link>
+      </div>
       <Claim_description color="rgba(11, 67, 75, 0.79)" />
     </div>
   );
