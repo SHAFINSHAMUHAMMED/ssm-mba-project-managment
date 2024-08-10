@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Claim_description from "../Description/claim_description";
 import 'react-phone-input-2/lib/style.css';
 import PhoneInput from 'react-phone-input-2';
@@ -14,6 +14,7 @@ const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showAnimation, setShowAnimation] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState('');
 
   const [formData, setFormData] = useState({
     name: "",
@@ -30,6 +31,9 @@ const MultiStepForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
 
   const validateCurrentStep = () => {
     let errors = {};
@@ -105,6 +109,12 @@ const MultiStepForm = () => {
 
   const handleSubmit = async () => {
     setIsLoading(true);
+
+    const dataToSend = {
+      ...formData,
+      currentUrl: currentUrl
+    };
+
     // Webhook URL
     const webhookUrl =
       "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY5MDYzNzA0M2M1MjY0NTUzZDUxMzMi_pc";
@@ -115,7 +125,7 @@ const MultiStepForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {

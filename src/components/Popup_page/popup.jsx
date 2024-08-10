@@ -19,6 +19,7 @@ function popup({ closePopup }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [downloadStarted, setDownloadStarted] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState('');
 
   useEffect(() => {
     // Add delay to active popup animation
@@ -30,6 +31,10 @@ function popup({ closePopup }) {
       clearTimeout(timeout);
     };
   }, []);
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
+
   const handleExit = () => {
     setIsActive(false);
     setTimeout(() => {
@@ -98,6 +103,11 @@ function popup({ closePopup }) {
       setIsLoading(true);
       const loaderTimeout = setTimeout(() => setIsLoading(false), 3000);
 
+      const dataToSend = {
+        ...formData,
+        currentUrl: currentUrl
+      };
+
       try {
         const response = await fetch(
           "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY5MDYzNzA0M2M1MjY0NTUzZDUxMzci_pc",
@@ -106,7 +116,7 @@ function popup({ closePopup }) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(formData),
+            body: JSON.stringify(dataToSend),
           }
         );
 

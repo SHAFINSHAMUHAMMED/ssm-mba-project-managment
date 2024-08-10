@@ -11,6 +11,8 @@ import businet from "../../assets/svg/Accredit-businet-icon.svg"
 import chea from "../../assets/svg/Accredit-chea-icon.svg"
 import xila from "../../assets/svg/Accredit-xila-icon.svg"
 import indian from "../../assets/svg/Accredit-indian-icon.svg"
+import wes from "../../assets/svg/wes-icon.svg"
+import iacbe from "../../assets/svg/Accredit-iacbe-icon.svg"
 
 
 
@@ -39,17 +41,20 @@ function acreditions() {
         <img src={businet} alt="" />
       </div>
      
-      <div class="accredit-card">
+      {/* <div class="accredit-card">
         <img src={chea} alt="" />
-      </div>
+      </div> */}
       <div class="accredit-card">
-        <img src={iao1} alt="" />
+        <img src={wes} alt="" />
       </div>
       <div class="accredit-card">
         <img src={xila} alt="" />
       </div>
       <div class="accredit-card">
         <img src={indian} alt="" />
+      </div>
+      <div class="accredit-card">
+        <img src={iacbe} alt="" />
       </div>
     </div>
     </Marquee>
@@ -82,14 +87,14 @@ function acreditions() {
     <Marquee direction='right'>
     <div class="accredit-cards">
     <div class="accredit-card">
-        <img className='accredit-card-img' src={iao1} alt="" />
+        <img className='accredit-card-img' src={wes} alt="" />
       </div>
       <div class="accredit-card">
         <img className='accredit-card-img' src={usrLazio} alt="" />
       </div>
-      <div class="accredit-card">
+      {/* <div class="accredit-card">
         <img className='accredit-card-img' src={chea} alt="" />
-      </div>
+      </div> */}
       <div class="accredit-card">
         <img className='accredit-card-img' src={xila} alt="" />
       </div>
@@ -97,7 +102,7 @@ function acreditions() {
         <img className='accredit-card-img' src={businet} alt="" />
       </div>
       <div class="accredit-card">
-        <img className='accredit-card-img' src={indian} alt="" />
+        <img className='accredit-card-img' src={iacbe} alt="" />
       </div>
     </div>
     </Marquee>
