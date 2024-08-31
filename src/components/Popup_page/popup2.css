@@ -1,0 +1,634 @@
+.popup2-main {
+    border-radius: 59px;
+    border: 1px solid rgba(255, 255, 255, 0.30);
+    background: #0C434B;
+    max-width: 846px;
+    width: 80%;
+    min-height: 715px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 72px;
+    padding-bottom: 58px;
+    z-index: 1000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-thank-you {
+    height: 567px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-thank-you h2 {
+    width: 608px;
+    color: white;
+    text-align: center;
+    font-size: 48px;
+    line-height: 50px;
+    margin-bottom: 25px;
+}
+
+.popup-thank-you p {
+    width: 419px;
+    color: rgba(255, 255, 255, 0.76);
+    text-align: center;
+    font-size: 14.585px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px;
+    margin-bottom: 23px;
+}
+
+.thank-you-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #FFF;
+    border-radius: 32px;
+    padding: 5px 25px 6px 8px;
+}
+
+.thank-you-button img {
+    width: 36px;
+    height: 36px;
+}
+
+.thank-you-button h6 {
+    color: #fff;
+    text-align: center;
+    font-size: 17.207px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23.006px;
+}
+
+.fades-enter {
+    opacity: 0;
+
+}
+
+.fades-enter-active {
+    opacity: 1;
+}
+
+.fades-exit {
+    opacity: 1;
+}
+
+.fades-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}
+
+
+.popup-enter {
+    opacity: 0;
+}
+
+.popup-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.popup-exit {
+    opacity: 1;
+}
+
+.popup-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-out
+}
+
+.popup2-sub {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.popup2-close-button {
+    position: absolute;
+    right: 7%;
+}
+
+.popup2-main-h1 {
+    max-width: 519px;
+    height: 96px;
+    color: #FFF;
+    text-align: center;
+    font-size: 46.168px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 0px */
+    margin-bottom: 15px;
+}
+
+.popup2-main-description {
+    max-width: 473px;
+    color: rgba(255, 255, 255, 0.76);
+    text-align: center;
+    font-size: 14.585px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.5px;
+    /* 133.701% */
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row label {
+    color: #FFF;
+    text-align: left;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 107.5%;
+    /* 23.65px */
+    text-transform: capitalize;
+    margin-bottom: 11px;
+    margin-left: 33px;
+}
+
+.form-row input {
+    width: 505px;
+    height: 59px;
+    flex-shrink: 0;
+    border-radius: 56.545px;
+    border: 0.775px solid rgba(0, 0, 0, 0.47);
+    background: #FCFCFC;
+    margin-bottom: 12px;
+    padding-left: 50px;
+}
+
+.form-row .react-tel-input .form-control {
+    width: 505px;
+    height: 59px;
+    flex-shrink: 0;
+    border-radius: 56.545px;
+    border: 0.775px solid rgba(0, 0, 0, 0.47);
+    background: #FCFCFC;
+    margin-bottom: 12px !important;
+    margin-top: 0px!important;
+    padding-left: 70px;
+    font-size: 17px;
+}
+
+.form-row .form-control {
+    position: relative;
+}
+
+.form-row .react-tel-input .flag-dropdown {
+    position: absolute;
+    background-color: transparent;
+    border-radius: 5px;
+    top: 0%;
+    transform: translate(50%, 50%);
+    height: 30px;
+}
+
+.preferred-mode-container {}
+
+.preferred-mode-container h4 {
+    color: #FFF;
+    text-align: left;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 107.5%;
+    /* 23.65px */
+    margin-bottom: 15px;
+    margin-left: 9px;
+}
+
+.preferred-mode-group {
+    display: flex;
+    gap: 8px;
+}
+
+.preferred-mode {
+    display: flex;
+    align-items: center;
+    width: 160px;
+    height: 41px;
+    flex-shrink: 0;
+    border-radius: 56.545px;
+    border: 0.775px solid rgba(255, 255, 255, 0.47);
+    background: rgba(17, 99, 111, 0.00);
+    cursor: pointer;
+    padding-left: 7px;
+    transition: background 0.3s, border 0.3s;
+}
+
+.preferred-mode.selected {
+    background: #11636F;
+    border: 0.775px solid rgba(255, 255, 255, 0.47);
+}
+
+.preferred-mode svg {
+    margin-right: 8px;
+}
+
+.preferred-mode label {
+    color: #FFF;
+    font-family: 'Sk-Modernist', sans-serif;
+    font-size: 17.614px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 107.5%;
+    /* 18.935px */
+}
+
+.preferred-mode input[type="radio"] {
+    display: none;
+}
+
+.preferred-mode p {
+    color: #FFF;
+    font-family: 'Sk-Modernist', sans-serif;
+    font-size: 17.614px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 107.5%;
+    /* 18.935px */
+}
+
+.motivations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.motivations-container h4 {
+    color: #FFF;
+    text-align: center;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 107.5%;
+    /* 23.65px */
+    text-transform: capitalize;
+    margin-top: 25px;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+}
+
+.motivations-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+    justify-content: center;
+}
+
+.motivations-option {
+    width: 305px;
+    height: 41px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    flex-shrink: 0;
+    border-radius: 56.545px;
+    border: 0.775px solid rgba(255, 255, 255, 0.47);
+    cursor: pointer;
+    padding-left: 6px;
+    /* transition: background 0.3s, border 0.3s; */
+}
+
+.motivations-option.selected {
+    background: #11636F;
+    border: 0.775px solid rgba(255, 255, 255, 0.47);
+}
+
+.motivations-option svg {
+    margin-right: 8px;
+}
+
+.motivations-option input[type="checkbox"] {
+    display: none;
+}
+
+.motivations-option p {
+    color: #FFF;
+    font-size: 17.614px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 107.5%;
+    /* 18.935px */
+}
+
+.cont-button {
+    margin-top: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 505px;
+    height: 58px;
+    flex-shrink: 0;
+    border-radius: 100.899px;
+    background-color: #259D4A;
+}
+
+.btn2 p {
+    width: 319px;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.82);
+    text-align: center;
+    font-size: 12.312px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 134%;
+    /* 16.499px */
+    letter-spacing: -0.185px;
+    margin-top: 11px;
+}
+
+.cont-button.disabled {
+    background-color: #68c384;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+
+
+@media only screen and (max-width: 1180px) {
+    .popup2-main {
+        border-radius: 50px;
+        padding-top: 65px;
+        padding-bottom: 50px;
+        min-height: auto;
+    }
+
+    .popup2-main-h1 {
+        max-width: 500px;
+        height: auto;
+        font-size: 36px;
+        font-style: normal;
+    }
+
+    .popup2-main-description {
+        max-width: 400px;
+        font-size: 12px;
+    }
+
+    .form-row label {
+        font-size: 18px;
+        font-style: normal;
+        margin-bottom: 10px;
+        margin-left: 28px;
+    }
+
+    .form-row input {
+        width: 400px;
+        height: 50px;
+        border-radius: 50px;
+        padding-left: 35px;
+    }
+
+    .form-row .react-tel-input .form-control {
+        width: 400px;
+        height: 50px;
+        border-radius: 50px;
+        padding-left: 65px;
+    }
+
+    .form-row .react-tel-input .flag-dropdown {
+        top: -5px;
+    }
+
+    .cont-button {
+        width: 400px;
+        height: 52px;
+    }
+
+    .btn2 p {
+        font-size: 12px;
+        letter-spacing: -0.19px;
+    }
+
+    .preferred-mode-container h4 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .preferred-mode {
+        width: 150px;
+        height: 40px;
+        padding-left: 3px;
+    }
+
+    .preferred-mode svg {
+        margin-right: 6px;
+    }
+
+    .preferred-mode label {
+        font-size: 15px;
+    }
+
+    .preferred-mode p {
+        font-size: 16px;
+    }
+
+    .motivations-container {
+        gap: 5px;
+    }
+
+    .motivations-container h4 {
+        font-size: 18px;
+    }
+
+    .motivations-group {
+        gap: 10px;
+    }
+
+    .motivations-option {
+        width: 305px;
+        height: 41px;
+        padding: 10px 20px;
+        padding-left: 4px;
+        /* transition: background 0.3s, border 0.3s; */
+    }
+
+    .motivations-option svg {
+        margin-right: 7px;
+    }
+
+    .motivations-option p {
+        font-size: 16px;
+    }
+}
+
+
+@media only screen and (max-width: 640px) {
+    .popup2-main {
+        width: 90%;
+        border-radius: 36px;
+        margin: auto;
+        display: flex;
+        padding-top: 30px;
+        padding-bottom: 25px;
+    }
+    
+    .popup2-close-button {
+        width: 22px;
+         right: 5%;
+         top: 10px;
+     }
+
+    .popup2-main-h1 {
+        max-width: 90%;
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .popup2-main-description {
+        max-width: 80%;
+        font-size: 11px;
+        line-height: 12px;
+    }
+
+    .form-row {
+        width: 100%;
+    }
+
+    .form-row label {
+        font-size: 16px;
+        margin-bottom: 5px;
+        margin-left: 30px;
+    }
+
+    .form-row input {
+        margin: auto;
+        width: 90%;
+        height: 45px;
+        border-radius: 40px;
+        margin-bottom: 8px;
+        padding-left: 20px;
+    }
+
+    .form-row .react-tel-input {
+        margin: auto;
+        width: 90%;
+    }
+
+    .form-row .react-tel-input .form-control {
+        width: 100%;
+        height: 45px;
+        border-radius: 40px;
+        margin-bottom: 8px;
+        padding-left: 65px;
+        font-size: 15px;
+    }
+
+    .form-row .react-tel-input .flag-dropdown {
+        top: -6px;
+    }
+
+    .cont-button {
+        margin: auto;
+        margin-top: 15px;
+        gap: 10px;
+        width: 85%;
+        height: 45px;
+        border-radius: 50px;
+        font-size: 80%;
+    }
+
+    .btn2 p {
+        width: 80%;
+        font-size: 9px;
+        line-height: 12px;
+        margin-top: 10px;
+    }
+
+    .preferred-mode-container {
+        width: 80%;
+    }
+
+    .preferred-mode-container h4 {
+        font-size: 16px;
+        font-style: normal;
+        margin-bottom: 12px;
+        margin-left: 9px;
+    }
+
+    .preferred-mode-group {
+        gap: 5px;
+    }
+
+    .preferred-mode {
+        width: 110px;
+        height: 35px;
+        border-radius: 50px;
+        padding-left: 3px;
+    }
+
+    .preferred-mode svg {
+        margin-right: 3px;
+        width: 25px;
+        height: 25px;
+    }
+
+    .preferred-mode label {
+        font-size: 12px;
+    }
+
+    .preferred-mode p {
+        font-size: 14px;
+    }
+
+    .motivations-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .motivations-container h4 {
+        max-width: 80%;
+        margin: auto;
+        font-size: 16px;
+        margin-top: 5px;
+        margin-bottom: 4px;
+        line-height: 105%;
+    }
+
+    .motivations-group {
+        gap: 8px;
+    }
+
+    .motivations-option {
+        width: 85%;
+        height: 38px;
+        padding: 10px 10px;
+        border-radius: 50px;
+        padding-left: 2px;
+    }
+
+    .motivations-option svg {
+        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+    }
+
+
+    .motivations-option p {
+        font-size: 12px;
+    }
+}

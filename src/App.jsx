@@ -21,7 +21,7 @@ const Student_support = React.lazy(() => import('./components/Student_support_gu
 const Icf_certification = React.lazy(() => import('./components/Icf_certification/icf_certification'));
 const Footer = React.lazy(() => import('./components/Footer/footer'));
 const StickyWhatsAppButton = React.lazy(() => import('./components/WhatsappStickyLogo/StickyWhatsAppButton'));
-const Popup = React.lazy(() => import('./components/Popup_page/popup'));
+const Popup = React.lazy(() => import('./components/Popup_page/popup2'));
 const GoogleTagManager = React.lazy(() => import("./components/Google_tag_mgr/GoogleTagManager"));
 
 function App() {
