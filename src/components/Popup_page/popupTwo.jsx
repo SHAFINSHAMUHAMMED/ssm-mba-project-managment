@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MultiStepProgressBar2 from "../Progress_bar/MultiStepProgressBar2";
+import MultiStepProgressBarTwo from "../Progress_bar/MultiStepProgressBarTwo";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import { CSSTransition } from "react-transition-group";
@@ -7,10 +7,10 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { usePopup } from "../Hoocks/PopupContext";
 import axios from "axios";
 
-import "./popup2.css";
+import "./popupTwo.css";
 import whatsppIcon from "../../assets/svg/WhatsApp_icon.svg";
 
-function Popup2({ closePopup }) {
+function PopupTwo({ closePopup }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
@@ -188,7 +188,7 @@ function Popup2({ closePopup }) {
               unique benefits that set us apart in the business education
               landscape.
             </p>
-            <MultiStepProgressBar2 currentStep={currentStep} />
+            <MultiStepProgressBarTwo currentStep={currentStep} />
 
             {currentStep === 1 && (
               <div className="form-row">
@@ -667,4 +667,4 @@ function Popup2({ closePopup }) {
   );
 }
 
-export default Popup2;
+export default PopupTwo;

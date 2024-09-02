@@ -3,7 +3,7 @@ import ButtonDark from "../Buttons/buttonDark";
 import Claim_description from "../Description/claim_description";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Popup from "../Popup_page/popup2";
+import Popup from "../Popup_page/popupTwo";
 import { usePopup } from "../Hoocks/PopupContext";
 
 import university_icon_large from "../../assets/svg/university-icon-large.svg";

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button1 from "../Buttons/buttonDark";
-import Popup from "../Popup_page/popup2";
+import Popup from "../Popup_page/popupTwo";
 import { usePopup } from "../Hoocks/PopupContext";
 
 import bagIcon from "../../assets/svg/bag-icon.svg" 

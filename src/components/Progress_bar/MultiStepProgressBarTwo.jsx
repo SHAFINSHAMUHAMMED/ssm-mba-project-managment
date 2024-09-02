@@ -1,7 +1,7 @@
 import React from 'react';
-import './MultiStepProgressBar2.css';
+import './MultiStepProgressBarTwo.css';
 
-const MultiStepProgressBar2 = ({ currentStep }) => {
+const MultiStepProgressBarTwo = ({ currentStep }) => {
   const totalSteps = 4;
 
   return (
@@ -20,4 +20,4 @@ const MultiStepProgressBar2 = ({ currentStep }) => {
   );
 };
 
-export default MultiStepProgressBar2;
+export default MultiStepProgressBarTwo;
