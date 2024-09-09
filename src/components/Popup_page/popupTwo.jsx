@@ -143,6 +143,7 @@ function PopupTwo({ closePopup }) {
         clearTimeout(loaderTimeout);
         setIsLoading(false);
         setDownloadStarted(true);
+        window.location.href = "https://offer.learnersuae.com/brochure-thank-you/";
       } catch (error) {
         console.error("Error posting form data:", error);
         clearTimeout(loaderTimeout);
@@ -178,7 +179,6 @@ function PopupTwo({ closePopup }) {
             fillOpacity="0.86"
           />
         </svg>
-        {!downloadStarted ? (
           <div className="popup2-sub">
             <h1 className="popup2-main-h1">
               Get Instant Access To The SSM MBA Brochure
@@ -632,36 +632,6 @@ function PopupTwo({ closePopup }) {
               </p>
             </div>
           </div>
-        ) : (
-          <CSSTransition
-            in={downloadStarted}
-            timeout={1000}
-            classNames="fades"
-            unmountOnExit
-          >
-            <div className="popup-thank-you">
-              <h2>
-                <span className="text-[#4FD97A]">Thank You</span> for Requesting
-                Our Brochure!
-              </h2>
-              <p>
-                Your brochure will be sent to your email and WhatsApp inbox
-                within the next 5 minutes. For immediate assistance or any
-                queries, please click the button below to chat with us directly.
-              </p>
-              <a
-                href="https://wa.me/+971504181328"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="thank-you-button">
-                  <img src={whatsppIcon} alt="whatsapp_img" />
-                  <h6>Chat With Us</h6>
-                </div>
-              </a>
-            </div>
-          </CSSTransition>
-        )}
       </div>
     </CSSTransition>
   );
