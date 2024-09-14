@@ -6,6 +6,7 @@ import { CSSTransition } from "react-transition-group";
 import ClipLoader from "react-spinners/ClipLoader";
 import { usePopup } from "../Hoocks/PopupContext";
 import axios from "axios";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 import "./popupTwo.css";
 import whatsppIcon from "../../assets/svg/WhatsApp_icon.svg";
@@ -17,6 +18,7 @@ function PopupTwo({ closePopup }) {
     email: "",
     jobRole: "",
     phone: "",
+    countryCode: "AE",
     currentUrl: window.location.href,
     preferredMode: "",
     motivations: [],
@@ -38,9 +40,13 @@ function PopupTwo({ closePopup }) {
     };
   }, []);
 
+  const validatePhone = (phone, countryCode) => {
+    const parsedNumber = parsePhoneNumberFromString(phone, countryCode);
+    return parsedNumber ? parsedNumber.isValid() : false;
+  };
+
   const validateName = (name) => name.length >= 3;
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
-  const validatePhone = (phone) => phone.length >= 5 && phone.length <= 15;
   const validateJobRole = (jobRole) => jobRole.length >= 2;
   const validatePreferredMode = (preferredMode) => !!preferredMode;
   const validateMotivations = (motivations) => motivations.length > 0;
@@ -49,10 +55,11 @@ function PopupTwo({ closePopup }) {
     switch (currentStep) {
       case 1:
         return validateName(formData.name) && validateEmail(formData.email);
-      case 2:
-        return (
-          validatePhone(formData.phone) && validateJobRole(formData.jobRole)
-        );
+        case 2:
+          return (
+            validatePhone(formData.phone, formData.countryCode) &&
+            validateJobRole(formData.jobRole)
+          );
       case 3:
         return validatePreferredMode(formData.preferredMode);
       case 4:
@@ -66,7 +73,7 @@ function PopupTwo({ closePopup }) {
     return (
       validateName(formData.name) &&
       validateEmail(formData.email) &&
-      validatePhone(formData.phone) &&
+      validatePhone(formData.phone, formData.countryCode) &&
       validateJobRole(formData.jobRole) &&
       validatePreferredMode(formData.preferredMode) &&
       validateMotivations(formData.motivations)
@@ -215,12 +222,18 @@ function PopupTwo({ closePopup }) {
               <div className="form-row">
                 <label htmlFor="Name">Phone</label>
                 <PhoneInput
-                  country={"ae"}
-                  value={formData.phone}
-                  placeholder={"Enter your Phone Number"}
-                  excludeCountries={"in,pk"}
-                  onChange={(value) => handleChange(value)}
-                />
+                country={formData.countryCode.toLowerCase()}
+                value={formData.phone}
+                placeholder="Enter your Phone Number"
+                excludeCountries={["in", "pk"]}
+                onChange={(value, country) =>
+                  setFormData({
+                    ...formData,
+                    phone: value,
+                    countryCode: country.countryCode.toUpperCase(),
+                  })
+                }
+              />
                 <label htmlFor="Name">Job Role</label>
                 <input
                   type="text"

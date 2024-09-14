@@ -1725,16 +1725,16 @@ line-height: 136%;
 }
 
 .react-tel-input .form-control {
-  height: 87px;
-  width: 700px;
-  border-radius: 73px;
-  border: 1px solid rgba(0, 0, 0, 0.47);
-  background: #FCFCFC;
-  padding: 25px 65px 25px 65px;
+  height: 87px!important;
+  width: 700px!important;
+  border-radius: 73px!important;
+  border: 1px solid rgba(0, 0, 0, 0.47)!important;
+  background: #FCFCFC!important;
+  padding: 25px 65px 25px 65px!important;
   margin-bottom: 16px !important;
   margin-top: 16px !important;
-  font-size: 25px;
-  color: #5B5454;
+  font-size: 25px!important;
+  color: #5B5454!important;
 }
 
 .form-control {
@@ -1742,12 +1742,12 @@ line-height: 136%;
 }
 
 .react-tel-input .flag-dropdown {
-  position: absolute;
-  background-color: transparent;
-  border-radius: 5px;
-  top: 25%;
-  transform: translate(50%, 50%);
-  height: 30px;
+  position: absolute!important;
+  background-color: transparent!important;
+  border-radius: 5px!important;
+  top: 18%!important;
+  transform: translate(50%, 50%)!important;
+  height: 30px!important;
 }
 
 .button-wrapper {
@@ -2011,29 +2011,8 @@ line-height: 136%;
   display: none;
 }
 
-.popup-sub .react-tel-input .form-control {
-  width: 331.102px;
-  height: 54.463px;
-  /* padding-bottom: 3px; */
-  padding-left: 70px;
-  flex-shrink: 0;
-  border-radius: 52.59px;
-  border: 0.72px solid rgba(0, 0, 0, 0.47);
-  background: #FCFCFC;
-  font-size: 100%;
-}
-
 .popup-sub .form-control {
   position: relative;
-}
-
-.popup-sub .react-tel-input .flag-dropdown {
-  position: absolute;
-  background-color: transparent;
-  border-radius: 5px;
-  top: 15%;
-  transform: translate(50%, 50%);
-  height: 30px;
 }
 
 
@@ -3321,23 +3300,23 @@ line-height: 136%;
   }
 
   .react-tel-input .form-control {
-    width: 100%;
-    height: 58px;
-    border-radius: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.47);
-    background: #FCFCFC;
-    padding: 15px 30px 15px 12%;
+    width: 100%!important;
+    height: 58px!important;
+    border-radius: 40px!important;
+    border: 1px solid rgba(0, 0, 0, 0.47)!important;
+    background: #FCFCFC!important;
+    padding: 15px 30px 15px 12%!important;
     margin-bottom: 16px !important;
     margin-top: 16px !important;
-    font-size: 20px;
+    font-size: 20px!important;
   }
 
   .react-tel-input .flag-dropdown {
-    border-radius: 5px;
-    top: 15%;
-    transform: translate(50%, 50%);
-    height: 30px;
-    margin-right: 50px;
+    border-radius: 5px!important;
+    top: 1%!important;
+    transform: translate(50%, 50%)!important;
+    height: 30px!important;
+    margin-right: 50px!important;
   }
 
   .icf-form button {
@@ -3497,20 +3476,6 @@ line-height: 136%;
 
   .popup-img-mob {
     display: none;
-  }
-
-  .popup-sub .react-tel-input .form-control {
-    width: 239px;
-    height: 39px;
-    padding-left: 65px;
-    border-radius: 38px;
-    border: 0.521px solid rgba(0, 0, 0, 0.47);
-    font-size: 100%;
-  }
-
-  .popup-sub .react-tel-input .flag-dropdown {
-    top: 15%;
-    height: 25px;
   }
 
   .footer-main img {
@@ -4698,23 +4663,23 @@ line-height: 136%;
   }
 
   .react-tel-input .form-control {
-    width: 100%;
-    height: 58px;
-    border-radius: 40px;
-    border: 1px solid rgba(0, 0, 0, 0.47);
-    background: #FCFCFC;
-    padding: 15px 30px 15px 70px;
+    width: 100%!important;
+    height: 58px!important;
+    border-radius: 40px!important;
+    border: 1px solid rgba(0, 0, 0, 0.47)!important;
+    background: #FCFCFC!important;
+    padding: 15px 30px 15px 70px!important;
     margin-bottom: 16px !important;
     margin-top: 16px !important;
-    font-size: 18px;
+    font-size: 18px!important;
   }
 
   .react-tel-input .flag-dropdown {
-    border-radius: 5px;
-    top: 15%;
-    transform: translate(50%, 50%);
-    height: 30px;
-    margin-right: 50px;
+    border-radius: 5px!important;
+    top: 1%!important;
+    transform: translate(50%, 50%)!important;
+    height: 30px!important;
+    margin-right: 50px!important;
   }
 
   .icf-form button {
@@ -4883,18 +4848,6 @@ line-height: 136%;
 
   }
 
-  .popup-sub .react-tel-input .form-control {
-    width: 285px;
-    height: 47px;
-    padding-left: 65px;
-    border-radius: 68px;
-  }
-
-  .popup-sub .react-tel-input .flag-dropdown {
-    top: 20%;
-    height: 25px;
-  }
-
   .footer-main {
     padding: 20px 0px 22px 0px;
   }
@@ -5036,16 +4989,6 @@ line-height: 136%;
 
   .popup-img-mob {
     height: 240px;
-  }
-
-  .popup-sub .react-tel-input .form-control {
-    width: 100%;
-    border-radius: 20px;
-  }
-
-  .popup-sub .react-tel-input .flag-dropdown {
-    top: 20%;
-    height: 25px;
   }
 
   .steps-to-unlock-cards-main::after {
