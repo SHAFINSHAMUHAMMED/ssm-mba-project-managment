@@ -117,6 +117,16 @@ function PopupTwo({ closePopup }) {
     }));
   };
 
+  const getIPAddress = async () => {
+    try {
+      const response = await axios.get('https://api.ipify.org?format=json');
+      return response.data.ip;
+    } catch (error) {
+      console.error("Failed to get IP address:", error);
+      return null;
+    }
+  };
+
   const handleDownload = async (e) => {
     console.log("sending form", formData);
 
@@ -126,6 +136,8 @@ function PopupTwo({ closePopup }) {
       const loaderTimeout = setTimeout(() => setIsLoading(false), 3000);
 
       try {
+        const ipAddress = await getIPAddress();
+        const dataToSend = { ...formData, ipAddress };
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: "Download Brochure",
@@ -139,7 +151,7 @@ function PopupTwo({ closePopup }) {
         const response = await axios.post(
           // SSM MBA Landing Page Brochure Download work flow
           "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY5MDYzNzA0M2M1MjY0NTUzZDUxMzci_pc",
-          formData,
+          dataToSend,
           {
             headers: {
               "Content-Type": "multipart/form-data",

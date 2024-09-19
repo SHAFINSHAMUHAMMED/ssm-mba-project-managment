@@ -8,6 +8,7 @@ import { ClipLoader } from 'react-spinners';
 import arrow from "../../assets/arrow.json"
 import MultiStepProgressBar from "../Progress_bar/MultiStepProgressBar";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
+import axios from "axios";
 
 const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -108,14 +109,26 @@ const MultiStepForm = () => {
     }
   };
 
+  const getIPAddress = async () => {
+    try {
+      const response = await axios.get('https://api.ipify.org?format=json');
+      return response.data.ip;
+    } catch (error) {
+      console.error("Failed to get IP address:", error);
+      return null;
+    }
+  };
+
   const handleSubmit = async () => {
     setIsLoading(true);
+    const ipAddress = await getIPAddress();
 
     const dataToSend = {
       ...formData,
-      currentUrl: currentUrl
+      currentUrl: currentUrl,
+      ipAddress
     };
-return console.log(formData)
+
     // Webhook URL
     const webhookUrl =
       "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY5MDYzNzA0M2M1MjY0NTUzZDUxMzMi_pc";
