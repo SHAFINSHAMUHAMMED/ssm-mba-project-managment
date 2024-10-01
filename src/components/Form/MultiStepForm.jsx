@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Claim_description from "../Description/claim_description";
-import 'react-phone-input-2/lib/style.css';
-import PhoneInput from 'react-phone-input-2';
-import { FaPhone } from 'react-icons/fa';
+import "react-phone-input-2/lib/style.css";
+import PhoneInput from "react-phone-input-2";
+import { FaPhone } from "react-icons/fa";
 import Lottie from "lottie-react";
-import { ClipLoader } from 'react-spinners';
-import arrow from "../../assets/arrow.json"
+import { ClipLoader } from "react-spinners";
+import arrow from "../../assets/arrow.json";
 import MultiStepProgressBar from "../Progress_bar/MultiStepProgressBar";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import axios from "axios";
@@ -14,7 +14,7 @@ const MultiStepForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showAnimation, setShowAnimation] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentUrl, setCurrentUrl] = useState('');
+  const [currentUrl, setCurrentUrl] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -23,6 +23,7 @@ const MultiStepForm = () => {
     // location: "",
     email: "",
     whatsapp: "",
+    countryCode: "AE",
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -35,12 +36,10 @@ const MultiStepForm = () => {
     setCurrentUrl(window.location.href);
   }, []);
 
-  const validateWhatsAppNumber = (phone) => {
-    const phoneNumber = parsePhoneNumberFromString(phone, "AE"); // Assume AE (UAE) is default
-    if (!phoneNumber || !phoneNumber.isValid()) {
-      return "Invalid WhatsApp number";
-    }
-    return "";
+  const validateWhatsAppNumber = (phone, countryCode) => {
+    const phoneNumber = parsePhoneNumberFromString(phone, countryCode);
+    console.log(countryCode);
+    return phoneNumber && phoneNumber.isValid();
   };
 
   const validateCurrentStep = () => {
@@ -81,13 +80,12 @@ const MultiStepForm = () => {
           isValid = false;
         }
         break;
-        case 5:
-          const phoneError = validateWhatsAppNumber(formData.whatsapp);
-          if (phoneError) {
-            errors.whatsapp = phoneError;
-            isValid = false;
-          }
-    break;
+      case 5:
+        if (!validateWhatsAppNumber(formData.whatsapp, formData.countryCode)) {
+          errors.whatsapp = "Invalid WhatsApp number";
+          isValid = false;
+        }
+        break;
       default:
         break;
     }
@@ -111,7 +109,7 @@ const MultiStepForm = () => {
 
   const getIPAddress = async () => {
     try {
-      const response = await axios.get('https://api.ipify.org?format=json');
+      const response = await axios.get("https://api.ipify.org?format=json");
       return response.data.ip;
     } catch (error) {
       console.error("Failed to get IP address:", error);
@@ -126,7 +124,7 @@ const MultiStepForm = () => {
     const dataToSend = {
       ...formData,
       currentUrl: currentUrl,
-      ipAddress
+      ipAddress,
     };
 
     // Webhook URL
@@ -168,8 +166,8 @@ const MultiStepForm = () => {
       if (e.key === "Enter") {
         if (currentStep < 5) {
           nextStep();
-        }else {
-          handleSubmit()
+        } else {
+          handleSubmit();
         }
       }
     };
@@ -204,7 +202,7 @@ const MultiStepForm = () => {
               type="text"
               name="specialization"
               value={formData.specialization}
-              readOnly 
+              readOnly
               className="specialization-input"
             />
 
@@ -262,20 +260,22 @@ const MultiStepForm = () => {
             {renderError("email")}
           </>
         );
-        case 5:
+      case 5:
         return (
           <>
-            <h2>
-            And Phone Number?
-            </h2>
+            <h2>And Phone Number?</h2>
             <PhoneInput
-              country={"ae"}
+              country={formData.countryCode.toLowerCase()}
               excludeCountries={"in,pk"}
               value={formData.whatsapp}
               placeholder={"Type Here..."}
               onKeyDown={handleKeyPress}
-              onChange={(phone) =>
-                setFormData({ ...formData, whatsapp: phone })
+              onChange={(phone, country) =>
+                setFormData({
+                  ...formData,
+                  whatsapp: phone,
+                  countryCode: country.countryCode.toUpperCase(),
+                })
               }
             />
             {renderError("whatsapp")}
@@ -290,29 +290,30 @@ const MultiStepForm = () => {
     <div className="icf-form-main" id="contactForm">
       {/* progress steps */}
       <MultiStepProgressBar currentStep={currentStep} />
-       <form className="icf-form" onSubmit={(e) => e.preventDefault()}>
-      {renderForm()}
-      <div className="button-wrapper">
-  <button type="button" onClick={nextStep} >
-  {currentStep < 5 && "CONTINUE"}
-  {currentStep === 5 && !isLoading && "Claim Your Free Consultation Now"}
-    {currentStep < 5 && showAnimation && (
-      <Lottie
-        animationData={arrow}
-        loop={true}
-        className="icf-button-lottie"
-      />
-    )}
-    {currentStep === 5 && isLoading && (
-    <ClipLoader color={"#ffffff"} size={20} />
-  )}
-  </button>
-</div>
-
-    </form>
-      <div className="form-svg-bg" >
+      <form className="icf-form" onSubmit={(e) => e.preventDefault()}>
+        {renderForm()}
+        <div className="button-wrapper">
+          <button type="button" onClick={nextStep}>
+            {currentStep < 5 && "CONTINUE"}
+            {currentStep === 5 &&
+              !isLoading &&
+              "Claim Your Free Consultation Now"}
+            {currentStep < 5 && showAnimation && (
+              <Lottie
+                animationData={arrow}
+                loop={true}
+                className="icf-button-lottie"
+              />
+            )}
+            {currentStep === 5 && isLoading && (
+              <ClipLoader color={"#ffffff"} size={20} />
+            )}
+          </button>
+        </div>
+      </form>
+      <div className="form-svg-bg">
         <svg
-        className="icf-form-main-svg "
+          className="icf-form-main-svg "
           xmlns="http://www.w3.org/2000/svg"
           width="156"
           height="75"
