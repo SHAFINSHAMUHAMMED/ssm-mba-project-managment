@@ -8,7 +8,7 @@ import iao from "../../assets/svg/Accredit-iao-icon.svg"
 import eduqua from "../../assets/svg/Accredit-eduqua-icon.svg"
 import usrLazio from "../../assets/svg/Accredit-usr-lazio-icon.svg"
 import businet from "../../assets/svg/Accredit-businet-icon.svg"
-import chea from "../../assets/svg/Accredit-chea-icon.svg"
+import Deac from "../../assets/svg/deac.svg"
 import xila from "../../assets/svg/Accredit-xila-icon.svg"
 import indian from "../../assets/svg/Accredit-indian-icon.svg"
 import wes from "../../assets/svg/wes-icon.svg"
@@ -41,9 +41,9 @@ function acreditions() {
         <img src={businet} alt="" />
       </div>
      
-      {/* <div class="accredit-card">
-        <img src={chea} alt="" />
-      </div> */}
+      <div class="accredit-card">
+        <img src={Deac} alt="" />
+      </div>
       <div class="accredit-card">
         <img src={wes} alt="" />
       </div>
@@ -92,9 +92,9 @@ function acreditions() {
       <div class="accredit-card">
         <img className='accredit-card-img' src={usrLazio} alt="" />
       </div>
-      {/* <div class="accredit-card">
-        <img className='accredit-card-img' src={chea} alt="" />
-      </div> */}
+      <div class="accredit-card">
+        <img className='accredit-card-img' src={Deac} alt="" />
+      </div>
       <div class="accredit-card">
         <img className='accredit-card-img' src={xila} alt="" />
       </div>
