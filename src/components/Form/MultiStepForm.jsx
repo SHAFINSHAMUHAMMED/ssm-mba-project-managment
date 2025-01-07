@@ -39,9 +39,19 @@ const MultiStepForm = () => {
   }, []);
 
   const validateWhatsAppNumber = (phone, countryCode) => {
-    const phoneNumber = parsePhoneNumberFromString(phone, countryCode);
-    console.log(countryCode);
-    return phoneNumber && phoneNumber.isValid();
+    const isManuallyValid = phone.length > 8;
+   
+       if (!isManuallyValid) {
+         return false;
+       }
+   
+       try {
+         const parsedNumber = parsePhoneNumberFromString(phone, countryCode);
+         return parsedNumber ? parsedNumber.isValid() : false;
+       } catch (error) {
+         console.error("Phone validation error:", error);
+         return false;
+       }
   };
 
   const validateCurrentStep = () => {
