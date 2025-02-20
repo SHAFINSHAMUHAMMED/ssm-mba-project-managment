@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Lottie from "lottie-react";
 import graph from "../../assets/TopRankedSMSLottie.json";
+import FeatureImg from '../../assets/FEATUREImg.webp'
 
 function swiss_school() {
   
@@ -18,7 +19,9 @@ function swiss_school() {
         In just one year, you’ll leap from aspiring professional to respected project leader. This isn't just education; it's your launchpad to extraordinary career heights. Enroll now and start your journey to the top.
         </p>
       </div>
-      <Lottie animationData={graph} loop={true} />
+      {/* <Lottie animationData={graph} loop={true} /> */}
+      <img src={FeatureImg} alt="" />
+
     </div>
   );
 }

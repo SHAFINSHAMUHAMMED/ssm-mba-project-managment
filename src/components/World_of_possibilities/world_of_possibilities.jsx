@@ -12,8 +12,8 @@ import sales_icon from "../../assets/svg/sales-icon.svg";
 import target2 from "../../assets/svg/target-2-icon.svg";
 import scolar from "../../assets/svg/scolar-icon.svg";
 import dotted from "../../assets/svg/dottet-curve-icon.svg";
-import swisMba from "../../assets/swiss-mba.webp";
-import swisMbaTab from "../../assets/swiss-mba-tab.webp";
+import swisMba from "../../assets/swiss-mba2.webp";
+import swisMbaTab from "../../assets/swiss-mba2.webp";
 
 function world_of_possibilities() {
   const { isPopupOpen, togglePopup } = usePopup();

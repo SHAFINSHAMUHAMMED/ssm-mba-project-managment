@@ -3,7 +3,7 @@ import MultiStepForm from "../Form/MultiStepForm";
 
 import GraphicPattern4 from "../../assets/svg/GraphicPatter4.svg";
 import GraphicPattern_mob from "../../assets/svg/graphicPattern-last-mob.svg";
-import icf_banner from "../../assets/icf-certification-banner.webp";
+import icf_banner from "../../assets/icf-certification-banner2.webp";
 import bottom_man from "../../assets/bottom-man.webp";
 import bottom_manMob from "../../assets/bottom-man-mob.webp";
 
