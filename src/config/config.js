@@ -1,0 +1,1 @@
+export const BASE_URL = "https://crm-dashboard-server-bxxe.onrender.com/api";
