@@ -35,11 +35,15 @@ function PopupTwo({ closePopup }) {
 
   const contactId = localStorage.getItem("contactId");
   const [utmSource, setUtmSource] = useState("");
+  const [campaignName, setCampaignName] = useState("");
+  const [campaignKeyWord, setCampaignKeyWord] = useState("");
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("utm_source");
     const medium = urlParams.get("utm_medium");
+    setCampaignName(urlParams.get("utm_campaign"));
+    setCampaignKeyWord(urlParams.get("utm_content"));
     if (source) {
       if (source === "google" && medium === "paidsearch") {
         setUtmSource('G Ads - Search');
@@ -208,13 +212,43 @@ function PopupTwo({ closePopup }) {
             },
           }
         );
-
-        const contactResponse = await axios.post(`${BASE_URL}/contact`, {
+        const body = {
           phone: formData.phone,
           name: formData.name,
           email: formData.email,
           source: utmSource || "Facebook",
-        });
+          customField: [
+            {
+              id: "se6FGXxVO1MwbaHsQJJ8",
+              field_value: "MBA",
+            },
+            {
+              id: "VLXPFtiX89yhyza2Tmjw",
+              field_value: "CMBS",
+            },
+            {
+              id: "GkmmDmkfWkSHy1uNGjk8",
+              field_value: campaignName,
+            },
+            {
+              id: "qHcBCBNKFwGbmLabQNqW",
+              field_value: campaignKeyWord,
+            },
+            {
+              id: "PUZroTvCFH7EExGtmMAR",
+              field_value: formData.jobRole,
+            },
+            {
+              id: "SZnVS8H9vr1PzhDJYc6s",
+              field_value: formData.preferredMode,
+            },
+            {
+              id: "7wKRbXGs313HE0huL89l",
+              field_value: formData.motivations,
+            },
+          ],
+        };
+        const contactResponse = await axios.post(`${BASE_URL}/contact`, body);
         localStorage.setItem("contactId", contactResponse.data);
 
         clearTimeout(loaderTimeout);
