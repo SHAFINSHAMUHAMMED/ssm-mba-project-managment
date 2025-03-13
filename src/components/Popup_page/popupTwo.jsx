@@ -37,13 +37,18 @@ function PopupTwo({ closePopup }) {
   const [utmSource, setUtmSource] = useState("");
   const [campaignName, setCampaignName] = useState("");
   const [campaignKeyWord, setCampaignKeyWord] = useState("");
+  const [utmMedium, setUtmMedium] = useState("");
+  const [gclid, setGclid] = useState("");
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const source = urlParams.get("utm_source");
     const medium = urlParams.get("utm_medium");
+    const gclid = urlParams.get("gclid");
     setCampaignName(urlParams.get("utm_campaign"));
     setCampaignKeyWord(urlParams.get("utm_content"));
+    setUtmMedium(medium);
+    setGclid(gclid);
     if (source) {
       if (source === "google" && medium === "paidsearch") {
         setUtmSource('G Ads - Search');
@@ -217,7 +222,7 @@ function PopupTwo({ closePopup }) {
           name: formData.name,
           email: formData.email,
           source: utmSource || "Facebook",
-          customField: [
+          customFields: [
             {
               id: "se6FGXxVO1MwbaHsQJJ8",
               field_value: "MBA",
@@ -247,6 +252,13 @@ function PopupTwo({ closePopup }) {
               field_value: formData.motivations,
             },
           ],
+          attributionSource: {
+            utmMedium: utmMedium,
+            gclid: gclid,
+            utmSource: utmSource,
+            utmContent: campaignKeyWord,
+            campaign: campaignName,
+        }
         };
         const contactResponse = await axios.post(`${BASE_URL}/contact`, body);
         localStorage.setItem("contactId", contactResponse.data);
@@ -314,6 +326,8 @@ function PopupTwo({ closePopup }) {
                   placeholder="Name"
                   value={formData.name}
                   onChange={handleChange}
+                autoComplete="off"
+
                 />
                 <label htmlFor="Name">Email</label>
                 <input
@@ -322,6 +336,8 @@ function PopupTwo({ closePopup }) {
                   placeholder="Email"
                   value={formData.email}
                   onChange={handleChange}
+                autoComplete="off"
+
                 />
               </div>
             )}
@@ -349,6 +365,8 @@ function PopupTwo({ closePopup }) {
                   placeholder="Job Role"
                   value={formData.jobRole}
                   onChange={handleChange}
+                autoComplete="off"
+
                 />
               </div>
             )}
